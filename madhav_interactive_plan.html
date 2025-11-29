@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhav's 12-Week Transformation Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .meal-schedule {
+            display: grid;
+            gap: 20px;
+        }
+
+        .meal-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .meal-card:hover {
+            transform: translateX(5px);
+        }
+
+        .meal-time {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meal-items {
+            margin-bottom: 15px;
+        }
+
+        .meal-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meal-item:last-child {
+            border-bottom: none;
+        }
+
+        .supplements {
+            background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .supplement-title {
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calories {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .workout-day {
+            background: linear-gradient(135deg, #f0fff4 0%, #e8fffe 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .workout-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .exercise {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .exercise-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .exercise-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .exercise-sets {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .exercise-link {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: background 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .exercise-link:hover {
+            background: #5a6fd8;
+            text-decoration: none;
+            color: white;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .phase-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #fff7e6 0%, #ffeaa7 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #e17055;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meal-option {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid;
+        }
+
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-1 { border-left-color: #4a90e2; }
+        .option-1 .option-title { color: #4a90e2; }
+        .option-1 .meal-item span:last-child { color: #4a90e2; }
+
+        .option-2 { border-left-color: #ff8c42; }
+        .option-2 .option-title { color: #ff8c42; }
+        .option-2 .meal-item span:last-child { color: #ff8c42; }
+
+        .option-3 { border-left-color: #28a745; }
+        .option-3 .option-title { color: #28a745; }
+        .option-3 .meal-item span:last-child { color: #28a745; }
+
+        .option-4 { border-left-color: #8e44ad; }
+        .option-4 .option-title { color: #8e44ad; }
+        .option-4 .meal-item span:last-child { color: #8e44ad; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .exercise {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .exercise-link {
+                margin-left: 0;
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ Madhav's Transformation Plan</h1>
+            <p>12-Week Journey to Your Best Self | Bangalore, India</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">66.4</div>
+                <div class="stat-label">Current Weight (kg)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">58.8</div>
+                <div class="stat-label">Target Weight (kg)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24.7</div>
+                <div class="stat-label">Current BMI</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7.6</div>
+                <div class="stat-label">Weight to Lose (kg)</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('nutrition')">🍽️ Nutrition Plan</button>
+            <button class="tab" onclick="showTab('workout')">💪 Workout Plan</button>
+            <button class="tab" onclick="showTab('supplements')">💊 Supplements</button>
+            <button class="tab" onclick="showTab('progress')">📊 Progress Tracking</button>
+            <button class="tab" onclick="showTab('lifestyle')">🌟 Lifestyle Tips</button>
+        </div>
+
+        <!-- NUTRITION TAB -->
+        <div id="nutrition" class="content">
+            <h2>🍽️ Daily Nutrition Plan</h2>
+            <p style="margin-bottom: 20px; color: #666;">Daily Target: 1,650-1,750 calories | Protein: 130-140g | Carbs: 140-160g | Fats: 55-65g</p>
+            
+            <div class="meal-schedule">
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🌅</span>
+                        6:00 AM - Pre-Workout
+                    </div>
+                    <div class="meal-items">
+                        <div class="meal-item">
+                            <span>Medium banana (100g)</span>
+                        </div>
+                        <div class="meal-item">
+                            <span>Black coffee (no sugar)</span>
+                        </div>
+                    </div>
+                    <div class="supplements">
+                        <div class="supplement-title">
+                            <span class="emoji">💊</span>
+                            Supplements:
+                        </div>
+                        <div>• Vitamin D3: 2000 IU</div>
+                        <div>• Magnesium: 200mg</div>
+                        <div>• Creatine: 3g (mix in water)</div>
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <span class="calories">120-140 cal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🥣</span>
+                        8:30 AM - Post-Workout Breakfast (Same Daily)
+                    </div>
+                    <div class="meal-items">
+                        <div class="meal-item">
+                            <span>3 egg whites + 1 whole egg</span>
+                        </div>
+                        <div class="meal-item">
+                            <span>Oats (40g dry) + 200ml milk</span>
+                        </div>
+                        <div class="meal-item">
+                            <span>2 almonds + 1 walnut (chopped on oats)</span>
+                        </div>
+                    </div>
+                    <div class="supplements">
+                        <div class="supplement-title">
+                            <span class="emoji">💊</span>
+                            Supplements:
+                        </div>
+                        <div>• Whey Protein: 25g (mix in water)</div>
+                        <div>• Vitamin B12: 1000mcg (Mon/Wed/Fri only)</div>
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <span class="calories">520-550 cal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🍃</span>
+                        11:30 AM - Mid-Morning Snack
+                    </div>
+                    <div class="meal-items">
+                        <div class="meal-item">
+                            <span>Green tea (no sugar)</span>
+                        </div>
+                        <div class="meal-item">
+                            <span>Small apple (150g) OR papaya (150g)</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <span class="calories">80-100 cal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🍛</span>
+                        1:30 PM - Lunch Options (Choose 1 daily)
+                    </div>
+                    
+                    <div class="meal-option option-1">
+                        <div class="option-title">
+                            <span class="emoji">🥛</span>
+                            OPTION 1: Traditional Dal Rice
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>White rice: 80g uncooked (250g cooked)</span>
+                                <span>280 cal, 6g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Moong dal: 50g uncooked (150g cooked)</span>
+                                <span>170 cal, 12g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Mixed vegetables: 200g (spinach, bottle gourd)</span>
+                                <span>60 cal, 3g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Curd: 100g + 1 tsp ghee</span>
+                                <span>85 cal, 4g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">595 cal | 25g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-2">
+                        <div class="option-title">
+                            <span class="emoji">🍖</span>
+                            OPTION 2: Chicken Rice Bowl
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>White rice: 70g uncooked (220g cooked)</span>
+                                <span>245 cal, 5g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Grilled chicken breast: 80g</span>
+                                <span>165 cal, 24g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Masoor dal: 30g uncooked (90g cooked)</span>
+                                <span>100 cal, 7g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Sautéed cabbage & carrots: 150g</span>
+                                <span>45 cal, 2g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>1 tsp coconut oil for cooking</span>
+                                <span>40 cal, 0g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">595 cal | 38g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-3">
+                        <div class="option-title">
+                            <span class="emoji">🧀</span>
+                            OPTION 3: Paneer Roti Meal
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>Whole wheat rotis: 3 medium (75g flour)</span>
+                                <span>270 cal, 9g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Paneer bhurji: 80g paneer</span>
+                                <span>200 cal, 16g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Chana dal: 35g uncooked (105g cooked)</span>
+                                <span>115 cal, 8g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Cucumber & tomato salad: 100g</span>
+                                <span>15 cal, 1g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">600 cal | 34g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-4">
+                        <div class="option-title">
+                            <span class="emoji">🐟</span>
+                            OPTION 4: Fish Curry Rice
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>White rice: 75g uncooked (240g cooked)</span>
+                                <span>265 cal, 5g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Fish curry: 90g fish + curry base</span>
+                                <span>180 cal, 25g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Toor dal: 30g uncooked (90g cooked)</span>
+                                <span>95 cal, 6g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Okra stir-fry: 150g</span>
+                                <span>55 cal, 3g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">595 cal | 39g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="supplements">
+                        <div class="supplement-title">
+                            <span class="emoji">💊</span>
+                            Supplements (Same for all options):
+                        </div>
+                        <div>• Isabgol (Fiber): 1 tbsp with water (30 mins before meal)</div>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🌿</span>
+                        4:30 PM - Evening Snack
+                    </div>
+                    <div class="meal-items">
+                        <div class="meal-item">
+                            <span>Green tea</span>
+                        </div>
+                        <div class="meal-item">
+                            <span>Roasted chana (30g) OR Almonds (10 pieces)</span>
+                        </div>
+                    </div>
+                    <div class="supplements">
+                        <div class="supplement-title">
+                            <span class="emoji">💊</span>
+                            Supplements:
+                        </div>
+                        <div>• Collagen: 10-15g (mix in tea or water)</div>
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <span class="calories">120-150 cal</span>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🍽️</span>
+                        8:30 PM - Dinner Options (Choose 1 daily)
+                    </div>
+                    
+                    <div class="meal-option option-1">
+                        <div class="option-title">
+                            <span class="emoji">🐔</span>
+                            OPTION 1: Grilled Chicken Dinner
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>Grilled chicken breast: 100g</span>
+                                <span>205 cal, 30g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>White rice: 50g uncooked (150g cooked)</span>
+                                <span>175 cal, 4g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Sautéed broccoli & bell peppers: 200g</span>
+                                <span>55 cal, 4g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Clear vegetable soup: 200ml</span>
+                                <span>25 cal, 2g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">460 cal | 40g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-2">
+                        <div class="option-title">
+                            <span class="emoji">🐟</span>
+                            OPTION 2: Fish Curry Light
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>Fish (pomfret/kingfish): 100g in light curry</span>
+                                <span>190 cal, 28g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Whole wheat rotis: 2 small (50g flour)</span>
+                                <span>180 cal, 6g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Sautéed spinach: 200g</span>
+                                <span>45 cal, 6g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Cucumber raita: 150ml</span>
+                                <span>35 cal, 2g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">450 cal | 42g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-3">
+                        <div class="option-title">
+                            <span class="emoji">🧀</span>
+                            OPTION 3: Paneer & Salad Bowl
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>Grilled paneer: 100g</span>
+                                <span>250 cal, 20g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Quinoa: 40g uncooked (120g cooked)</span>
+                                <span>145 cal, 5g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Mixed salad: 250g (lettuce, tomato, cucumber)</span>
+                                <span>40 cal, 3g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Lemon soup: 200ml</span>
+                                <span>20 cal, 1g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">455 cal | 29g protein</span>
+                        </div>
+                    </div>
+
+                    <div class="meal-option option-4">
+                        <div class="option-title">
+                            <span class="emoji">🥚</span>
+                            OPTION 4: Egg & Veggie Scramble
+                        </div>
+                        <div class="meal-items">
+                            <div class="meal-item">
+                                <span>Scrambled eggs: 2 whole + 2 whites</span>
+                                <span>200 cal, 20g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Brown bread: 2 slices</span>
+                                <span>160 cal, 6g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Sautéed mushrooms & onions: 150g</span>
+                                <span>50 cal, 4g protein</span>
+                            </div>
+                            <div class="meal-item">
+                                <span>Tomato soup: 200ml</span>
+                                <span>35 cal, 2g protein</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <span class="calories">445 cal | 32g protein</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-time">
+                        <span class="emoji">🌙</span>
+                        10:00 PM - Before Bed (Optional)
+                    </div>
+                    <div class="meal-items">
+                        <div class="meal-item">
+                            <span>Warm milk (200ml) with turmeric</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <span class="calories">120 cal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WORKOUT TAB -->
+        <div id="workout" class="content hidden">
+            <h2>💪 5-Day Workout Plan (6:30-8:00 AM)</h2>
+            
+            <div class="workout-day">
+                <div class="workout-title">
+                    <span class="emoji">💪</span>
+                    MONDAY - Push Day (Chest, Shoulders, Triceps)
+                </div>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Bench Press</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/hWbUlkb5Ms4" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Incline Dumbbell Press</div>
+                            <div class="exercise-sets">3 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/Gruq177Psnk" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Overhead Press</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=OLePvpxQEGk" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Cable Chest Flyes</div>
+                            <div class="exercise-sets">3 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/iHud-VwP_lk" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Side Lateral Raises</div>
+                            <div class="exercise-sets">3 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/JIhbYYA1Q90" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Triceps Dips</div>
+                            <div class="exercise-sets">3 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/SLk3UUV8GuI" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Core Finisher: Plank Hold</div>
+                            <div class="exercise-sets">3 sets x 1 min</div>
+                        </div>
+                        <a href="https://youtu.be/pvIjsG5Svck" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-day">
+                <div class="workout-title">
+                    <span class="emoji">🔥</span>
+                    TUESDAY - Pull Day (Back, Biceps)
+                </div>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Deadlift</div>
+                            <div class="exercise-sets">4 sets x 6-8 reps</div>
+                        </div>
+                        <a href="https://youtu.be/vfKwjT5-86k" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Pull-ups/Lat Pulldown</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/77bPLrsMwiQ" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Bent-Over Barbell Rows</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/FWJR5Ve8bnQ" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Face Pulls</div>
+                            <div class="exercise-sets">3 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/qEyoBOpvqR4" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Barbell Bicep Curls</div>
+                            <div class="exercise-sets">4 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/N6paU6TGFWU" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Hammer Curls</div>
+                            <div class="exercise-sets">3 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/0EWBnWyJV5U" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Core Finisher: Hanging Leg Raises</div>
+                            <div class="exercise-sets">3 sets x 10</div>
+                        </div>
+                        <a href="https://youtu.be/JB2oyawG9KI" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-day">
+                <div class="workout-title">
+                    <span class="emoji">🦵</span>
+                    WEDNESDAY - Legs Day
+                </div>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Squats</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/q17wfrRtBH0" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Romanian Deadlifts</div>
+                            <div class="exercise-sets">4 sets x 8-10 reps</div>
+                        </div>
+                        <a href="https://youtu.be/5rIqP63yWFg" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Leg Press</div>
+                            <div class="exercise-sets">4 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/nDh_BlnLCGc" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Walking Lunges</div>
+                            <div class="exercise-sets">3 sets x 10 per leg</div>
+                        </div>
+                        <a href="https://youtu.be/6Rhchj0nCp8" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Leg Curls</div>
+                            <div class="exercise-sets">3 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/5Cyui1aLR9g" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Calf Raises</div>
+                            <div class="exercise-sets">4 sets x 15-20 reps</div>
+                        </div>
+                        <a href="https://youtu.be/xxyQ0EWHVlQ" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Core Finisher: Russian Twists</div>
+                            <div class="exercise-sets">3 sets x 20</div>
+                        </div>
+                        <a href="https://youtu.be/DJQGX2J4IVw" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-day">
+                <div class="workout-title">
+                    <span class="emoji">🎯</span>
+                    THURSDAY - Upper Body + Core Intensive
+                </div>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Dumbbell Press</div>
+                            <div class="exercise-sets">4 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/VmB1G1K7v94" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Seated Cable Rows</div>
+                            <div class="exercise-sets">4 sets x 10-12 reps</div>
+                        </div>
+                        <a href="https://youtu.be/UCXxvVItLoM" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Arnold Press</div>
+                            <div class="exercise-sets">3 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/6Z15_WdXmVw" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Cable Crunches</div>
+                            <div class="exercise-sets">4 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/Xyd_fa5zoEU" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Leg Raises</div>
+                            <div class="exercise-sets">4 sets x 12-15 reps</div>
+                        </div>
+                        <a href="https://youtu.be/JB2oyawG9KI" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Bicycle Crunches</div>
+                            <div class="exercise-sets">3 sets x 20</div>
+                        </div>
+                        <a href="https://youtu.be/9FGilxCbdz8" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Dead Bug</div>
+                            <div class="exercise-sets">3 sets x 10 per side</div>
+                        </div>
+                        <a href="https://youtu.be/g_BYB0R-4Ws" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Mountain Climbers</div>
+                            <div class="exercise-sets">3 sets x 30 seconds</div>
+                        </div>
+                        <a href="https://youtu.be/cnyTQDSE884" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-day">
+                <div class="workout-title">
+                    <span class="emoji">⚡</span>
+                    FRIDAY - Full Body + HIIT Cardio
+                </div>
+                <div class="exercise-list">
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Burpees</div>
+                            <div class="exercise-sets">3 sets x 10</div>
+                        </div>
+                        <a href="https://youtu.be/TU8QYVW0gDU" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Kettlebell Swings</div>
+                            <div class="exercise-sets">4 sets x 15-20</div>
+                        </div>
+                        <a href="https://youtu.be/YSxHifyI6s8" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Push-ups</div>
+                            <div class="exercise-sets">3 sets x 12-15</div>
+                        </div>
+                        <a href="https://youtu.be/IODxDxX7oi4" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">Bodyweight Squats</div>
+                            <div class="exercise-sets">3 sets x 15-20</div>
+                        </div>
+                        <a href="https://youtu.be/aclHkVaku9U" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                    <div class="exercise">
+                        <div class="exercise-info">
+                            <div class="exercise-name">HIIT Cardio</div>
+                            <div class="exercise-sets">15 min (30s high/30s rest)</div>
+                        </div>
+                        <a href="https://youtu.be/ml6cT4AZdqI" target="_blank" class="exercise-link">📹 Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-title">
+                    <span class="emoji">🏖️</span>
+                    Weekend Schedule
+                </div>
+                <div><strong>Saturday:</strong> Active recovery - 30-45 min walk, stretching</div>
+                <div><strong>Sunday:</strong> Rest or light yoga/stretching</div>
+            </div>
+        </div>
+
+        <!-- SUPPLEMENTS TAB -->
+        <div id="supplements" class="content hidden">
+            <h2>💊 Supplement Protocol & Brands</h2>
+            
+            <div class="phase-card">
+                <div class="phase-title">📅 Daily Supplement Schedule</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🌅</span>
+                            Pre-Workout (6:00 AM)
+                        </div>
+                        <div>• <strong>Vitamin D3:</strong> 2000 IU</div>
+                        <div>• <strong>Magnesium:</strong> 200mg</div>
+                        <div>• <strong>Creatine:</strong> 3g (mix in water)</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🥤</span>
+                            Post-Workout (8:30 AM)
+                        </div>
+                        <div>• <strong>Whey Protein:</strong> 25-30g</div>
+                        <div>• <strong>Vitamin B12:</strong> 1000mcg (Mon/Wed/Fri only)</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🍽️</span>
+                            With Lunch (1:30 PM)
+                        </div>
+                        <div>• <strong>Isabgol (Fiber):</strong> 1 tbsp with water (30 mins before meal)</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🌿</span>
+                            Evening (4:30 PM)
+                        </div>
+                        <div>• <strong>Collagen:</strong> 10-15g (mix with green tea or water)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">🛒 Recommended Brands (Available in India)</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="meal-item">
+                        <span><strong>Vitamin D3:</strong> HealthKart, Carbamide Forte</span>
+                        <span style="color: #667eea;">₹300-500/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Whey Protein:</strong> Optimum Nutrition, Dymatize, MuscleBlaze</span>
+                        <span style="color: #667eea;">₹2,000-3,000/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Creatine:</strong> Optimum Nutrition, Universal Nutrition</span>
+                        <span style="color: #667eea;">₹600-900/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Magnesium:</strong> Nature's Bounty, Himalayan Organics</span>
+                        <span style="color: #667eea;">₹400-600/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Vitamin B12:</strong> HealthKart, Nutricost</span>
+                        <span style="color: #667eea;">₹200-400/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Collagen:</strong> Oziva, Himalayan Organics</span>
+                        <span style="color: #667eea;">₹1,500-2,000/month</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Isabgol (Fiber):</strong> Dabur, Patanjali</span>
+                        <span style="color: #667eea;">₹100-200/month</span>
+                    </div>
+                </div>
+                <div class="tip-card" style="margin-top: 20px;">
+                    <div class="tip-title">
+                        <span class="emoji">💰</span>
+                        Total Monthly Cost
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #667eea;">₹5,100-7,600 per month</div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">⚠️ Important Notes</div>
+                <div style="display: grid; gap: 10px;">
+                    <div>• Take supplements consistently at the same times daily</div>
+                    <div>• Drink plenty of water with fiber supplements</div>
+                    <div>• Vitamin D3 is best absorbed with fats (take with breakfast)</div>
+                    <div>• Creatine doesn't need loading - 3g daily is sufficient</div>
+                    <div>• B12 supplement only needed 3x per week</div>
+                    <div>• Collagen can be mixed with hot or cold beverages</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS TAB -->
+        <div id="progress" class="content hidden">
+            <h2>📊 12-Week Progress Tracking</h2>
+            
+            <div class="phase-card">
+                <div class="phase-title">🎯 Target Timeline</div>
+                <div style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Current Weight: 66.4 kg</span>
+                        <span>Target Weight: 58.8 kg</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px; color: #667eea; font-weight: bold;">
+                        7.6 kg to lose over 12 weeks
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; gap: 20px;">
+                <div class="phase-card">
+                    <div class="phase-title">📅 Weeks 1-4: Foundation Phase</div>
+                    <div><strong>Goal:</strong> Establish routine, reduce calories by 300/day</div>
+                    <div><strong>Expected Weight Loss:</strong> 2-2.5 kg (66.4 → 64 kg)</div>
+                    <div><strong>Focus:</strong> Form perfection, habit building</div>
+                    <div style="margin-top: 15px;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 33%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">🚀 Weeks 5-8: Acceleration Phase</div>
+                    <div><strong>Goal:</strong> Increase workout intensity, refine nutrition</div>
+                    <div><strong>Expected Weight Loss:</strong> 2.5-3 kg (64 → 61 kg)</div>
+                    <div><strong>Focus:</strong> Progressive overload, core strengthening</div>
+                    <div style="margin-top: 15px;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 66%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">🏆 Weeks 9-12: Transformation Phase</div>
+                    <div><strong>Goal:</strong> Final push, body fat reduction</div>
+                    <div><strong>Expected Weight Loss:</strong> 2-3 kg (61 → 58-59 kg)</div>
+                    <div><strong>Focus:</strong> Definition, habit sustainability</div>
+                    <div style="margin-top: 15px;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">📱 Daily Tracking Checklist</div>
+                <div style="display: grid; gap: 10px;">
+                    <div class="meal-item">
+                        <span>☐ Weight (same time daily - morning after bathroom)</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Water intake (target: 3-4 liters)</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ All meals completed as per plan</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Supplements taken at correct times</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Workout completed</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Sleep quality (rate 1-10)</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Energy levels (rate 1-10)</span>
+                    </div>
+                    <div class="meal-item">
+                        <span>☐ Cigarettes smoked (track reduction)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">📏 Weekly Measurements</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <div><strong>Body Measurements:</strong></div>
+                        <div>• Waist circumference</div>
+                        <div>• Chest circumference</div>
+                        <div>• Arm circumference</div>
+                        <div>• Thigh circumference</div>
+                    </div>
+                    <div>
+                        <div><strong>Performance Metrics:</strong></div>
+                        <div>• Bench press weight</div>
+                        <div>• Deadlift weight</div>
+                        <div>• Plank hold duration</div>
+                        <div>• Push-ups in a row</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-title">
+                    <span class="emoji">🎯</span>
+                    Expected Final Results
+                </div>
+                <div>• <strong>Weight:</strong> 58-60 kg (7.6 kg loss from current 66.4 kg)</div>
+                <div>• <strong>Body Fat:</strong> 12-14% (current: 20%)</div>
+                <div>• <strong>BMI:</strong> 21-22 (optimal range)</div>
+                <div>• <strong>Visible abs definition</strong></div>
+                <div>• <strong>Improved skin and hair health</strong></div>
+                <div>• <strong>Better energy and mood</strong></div>
+            </div>
+        </div>
+
+        <!-- LIFESTYLE TAB -->
+        <div id="lifestyle" class="content hidden">
+            <h2>🌟 Lifestyle Optimization</h2>
+            
+            <div class="phase-card">
+                <div class="phase-title">💼 Sedentary Work Solutions</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">⏰</span>
+                            Hourly Movement
+                        </div>
+                        <div>• Stand and walk for 2-3 minutes every hour</div>
+                        <div>• Set phone reminders every 60 minutes</div>
+                        <div>• Take calls while standing when possible</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🪑</span>
+                            Desk Exercises
+                        </div>
+                        <div>• Seated leg extensions (20 reps every 2 hours)</div>
+                        <div>• Calf raises while standing</div>
+                        <div>• Neck rolls and shoulder shrugs</div>
+                        <div>• Wall push-ups during bathroom breaks</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🚶</span>
+                            Lunch Break Activity
+                        </div>
+                        <div>• 10-15 minute walk after eating</div>
+                        <div>• Use stairs instead of elevator</div>
+                        <div>• Park farther from office entrance</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">🚭 Smoking Cessation Plan</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="meal-item">
+                        <span><strong>Current:</strong> 5-6 cigarettes/day</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Weeks 1-4:</strong> Reduce to 2-3 cigarettes/day</span>
+                        <span style="color: #ff6b6b;">-50% reduction</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Weeks 5-8:</strong> Reduce to 1-2 cigarettes/day</span>
+                        <span style="color: #ff6b6b;">-75% reduction</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Weeks 9-12:</strong> Aim for complete cessation</span>
+                        <span style="color: #4ecdc4;">🎯 Smoke-free goal</span>
+                    </div>
+                </div>
+                
+                <div class="tip-card" style="margin-top: 15px;">
+                    <div class="tip-title">
+                        <span class="emoji">💡</span>
+                        Cessation Strategies
+                    </div>
+                    <div>• Replace smoking breaks with 5-minute walks</div>
+                    <div>• Keep hands busy with stress ball or fidget toy</div>
+                    <div>• Chew sugar-free gum when cravings hit</div>
+                    <div>• Practice deep breathing exercises</div>
+                    <div>• Reward yourself for smoke-free days</div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">💧 Hydration Protocol</div>
+                <div style="display: grid; gap: 10px;">
+                    <div class="meal-item">
+                        <span><strong>Daily Target:</strong> 3-4 liters</span>
+                        <span style="color: #667eea;">Track with app or bottle marks</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Morning:</strong> 2 glasses upon waking</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Pre-Workout:</strong> 1 glass 30 minutes before</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Post-Workout:</strong> 2 glasses</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>With Meals:</strong> 1 glass with each meal</span>
+                    </div>
+                    <div class="meal-item">
+                        <span><strong>Evening:</strong> Herbal tea or warm water</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">😴 Sleep Optimization</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🌙</span>
+                            Pre-Sleep Routine (9:30-10:30 PM)
+                        </div>
+                        <div>• No screens 1 hour before bed</div>
+                        <div>• Dim lights after 9 PM</div>
+                        <div>• Take magnesium supplement</div>
+                        <div>• Light stretching or reading</div>
+                        <div>• Warm milk with turmeric</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🛏️</span>
+                            Sleep Environment
+                        </div>
+                        <div>• Room temperature: 22-24°C</div>
+                        <div>• Use blackout curtains or eye mask</div>
+                        <div>• Keep phone in another room or airplane mode</div>
+                        <div>• Use earplugs if needed for noise</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">🌟 Skin & Hair Health Boosters</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <div class="tip-card">
+                            <div class="tip-title">
+                                <span class="emoji">✨</span>
+                                For Glowing Skin
+                            </div>
+                            <div>• 4+ liters water daily</div>
+                            <div>• Green tea antioxidants</div>
+                            <div>• Vitamin C from citrus fruits</div>
+                            <div>• Collagen supplement</div>
+                            <div>• Omega-3 from fish/walnuts</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tip-card">
+                            <div class="tip-title">
+                                <span class="emoji">💇</span>
+                                For Strong Hair
+                            </div>
+                            <div>• Biotin from eggs & nuts</div>
+                            <div>• Iron from spinach & lean meats</div>
+                            <div>• Adequate protein intake</div>
+                            <div>• Zinc from pumpkin seeds</div>
+                            <div>• B12 supplement 3x/week</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-title">🌦️ Bangalore Weather Adaptations</div>
+                <div style="display: grid; gap: 15px;">
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🌧️</span>
+                            Monsoon Season Backup
+                        </div>
+                        <div>• Indoor bodyweight exercises</div>
+                        <div>• Resistance band workouts</div>
+                        <div>• YouTube home workout videos</div>
+                        <div>• Yoga/stretching routines</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-title">
+                            <span class="emoji">🏭</span>
+                            Air Quality Management
+                        </div>
+                        <div>• Check AQI before outdoor activities</div>
+                        <div>• Indoor cardio on high pollution days</div>
+                        <div>• Use air purifier if available</div>
+                        <div>• Morning workouts when air is cleaner</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-title">
+                    <span class="emoji">💰</span>
+                    Budget-Friendly Tips
+                </div>
+                <div>• <strong>Bulk Cooking:</strong> Prepare meals in large batches on weekends</div>
+                <div>• <strong>Seasonal Shopping:</strong> Buy vegetables that are in season</div>
+                <div>• <strong>Local Markets:</strong> Shop at local vegetable markets for better prices</div>
+                <div>• <strong>Generic Supplements:</strong> Choose trusted local brands over imported ones</div>
+                <div>• <strong>Home Gym:</strong> Invest in basic equipment for rainy day workouts</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars when they come into view
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            const animateProgressBars = () => {
+                progressBars.forEach(bar => {
+                    const rect = bar.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        bar.style.transition = 'width 2s ease-in-out';
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', animateProgressBars);
+            animateProgressBars(); // Run once on load
+
+            // Add hover effects to meal cards
+            const mealCards = document.querySelectorAll('.meal-card');
+            mealCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(102, 126, 234, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            // Add click effects to exercise items
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.addEventListener('click', function() {
+                    this.style.background = '#e8f5e8';
+                    this.style.borderLeft = '4px solid #4ecdc4';
+                    setTimeout(() => {
+                        this.style.background = 'white';
+                        this.style.borderLeft = 'none';
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
